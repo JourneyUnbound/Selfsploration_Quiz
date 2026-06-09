@@ -1,0 +1,513 @@
+I'll create the complete Journey Quiz code with all your specifications. Here's the full implementation:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Unbound™ | Selfsploration Journey</title>
+    <style>
+        :root {
+            --cotton-candy: #E8A0A8;
+            --indigo: #4E038C;
+            --bondi-blue: #0891B2;
+            --ocean-mist: #14B8A6;
+            --deep-twilight: #120F73;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', system-ui, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--indigo) 0%, var(--deep-twilight) 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: Georgia, serif;
+        }
+
+        .logo-header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--cotton-candy);
+            margin-bottom: 2rem;
+        }
+
+        .logo-header h1 {
+            font-size: 2.5rem;
+            color: var(--cotton-candy);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: var(--ocean-mist);
+        }
+
+        .privacy-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 15, 115, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .privacy-card {
+            background: white;
+            color: var(--deep-twilight);
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .privacy-card h2 {
+            color: var(--indigo);
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-option {
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid var(--bondi-blue);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .privacy-option:hover {
+            background: var(--bondi-blue);
+            color: white;
+            border-color: var(--cotton-candy);
+        }
+
+        .quiz-section {
+            display: none;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--cotton-candy);
+        }
+
+        .scene-setting {
+            font-style: italic;
+            color: var(--ocean-mist);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--cotton-candy);
+        }
+
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .answer-btn {
+            padding: 1rem;
+            background: rgba(8, 145, 178, 0.3);
+            border: 2px solid var(--bondi-blue);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .answer-btn:hover {
+            background: var(--bondi-blue);
+            transform: translateX(5px);
+        }
+
+        .answer-btn.selected {
+            background: var(--cotton-candy);
+            border-color: var(--indigo);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--cotton-candy);
+            color: var(--deep-twilight);
+        }
+
+        .btn-primary:hover {
+            background: var(--indigo);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--cotton-candy);
+            color: var(--cotton-candy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cotton-candy);
+            color: var(--deep-twilight);
+        }
+
+        .progress-indicator {
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--ocean-mist);
+        }
+
+        .result-section {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .result-title {
+            font-size: 3rem;
+            color: var(--cotton-candy);
+            margin-bottom: 1rem;
+        }
+
+        .mythology-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: left;
+            border: 2px solid var(--indigo);
+        }
+
+        .myth-title {
+            color: var(--ocean-mist);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .myth-summary {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .core-message {
+            font-style: italic;
+            color: var(--cotton-candy);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bondi-blue);
+        }
+
+        .restart-btn {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: var(--ocean-mist);
+            color: var(--deep-twilight);
+        }
+
+        .age-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-twilight);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .age-gate-content {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Age Verification Gate -->
+    <div class="age-gate" id="ageGate">
+        <div class="age-gate-content">
+            <h1 style="color: var(--cotton-candy);">Journey Unbound™</h1>
+            <p style="margin: 2rem 0;">This platform contains adult exploration themes.</p>
+            <p>You must be 18+ to continue.</p>
+            <button class="btn btn-primary" onclick="verifyAge()" style="margin-top: 2rem;">I am 18 or older</button>
+        </div>
+    </div>
+
+    <!-- Privacy Mode Selection -->
+    <div class="privacy-modal hidden" id="privacyModal">
+        <div class="privacy-card">
+            <h2>Choose Your Privacy Mode</h2>
+            <p style="margin-bottom: 1.5rem;">Your data stays under your control:</p>
+            <div class="privacy-option" onclick="selectPrivacy('anonymous')">
+                <strong>🕶️ Anonymous Mode</strong><br>
+                Data deleted when browser closes
+            </div>
+            <div class="privacy-option" onclick="selectPrivacy('local')">
+                <strong>💾 Local-Only Mode</strong> (recommended)<br>
+                Data stored on your device only
+            </div>
+            <div class="privacy-option" onclick="selectPrivacy('cloud')">
+                <strong>☁️ Cloud Sync Mode</strong><br>
+                Zero-knowledge encrypted storage
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Container -->
+    <div class="container" id="quizContainer">
+        <div class="logo-header">
+            <h1>Journey Unbound™</h1>
+            <p class="tagline">Illuminate your storey</p>
+        </div>
+
+        <div class="quiz-section" id="questionSection">
+            <div class="progress-indicator" id="progressIndicator">
+                Question <span id="currentQuestion">1</span> of 10
+            </div>
+
+            <div class="question-card">
+                <div class="scene-setting" id="sceneSetting"></div>
+                <h3 class="question-text" id="questionText"></h3>
+                <div class="answer-options" id="answerOptions"></div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevQuestion()">Previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <h2 class="result-title" id="resultTitle"></h2>
+            
+            <div class="mythology-box">
+                <h3 class="myth-title" id="mythTitle"></h3>
+                <div class="myth-summary" id="mythSummary"></div>
+                <div class="core-message" id="coreMessage"></div>
+            </div>
+
+            <p style="margin: 2rem 0; font-size: 1.2rem;" id="resultDescription"></p>
+
+            <button class="btn btn-primary restart-btn" onclick="retakeQuiz()">Retake Journey</button>
+        </div>
+    </div>
+
+    <script>
+        // ========== DATA STRUCTURES ==========
+        
+        const QUESTIONS = [
+            {
+                id: 1,
+                scene: "You're standing at the edge of a chasm. Something calls from the other side.",
+                question: "What is your first instinct?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "An eagerness to be pulled toward it --- whatever is calling me is worth going to meet." },
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You choose to walk across it. You commit to the crossing and embrace the change that comes with it." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "A moment of care for what I keep --- the people, the place, the life I've tended, the centre of it all carried with me wherever I go." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "The flame spreads through you and carries you forward. It expands and moves you toward the crossing." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You feel the chasm activate within you --- a transformation that's alive and expansive." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "The chasm remakes you. You feel yourself being reshaped by its presence --- transformed by what it demands of you." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "A stillness --- the knowing was already deep within me, waiting. I want to let it speak before I cross the threshold." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You look into the chasm and see what calls from the other side. Your sight pierces through to what's waiting." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "A recognition --- this edge has similarities to others I've stood at, and the thread between them is what draws me forward." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You recognize this edge in your story. The pattern has always been leading you here --- and you accept that path." }
+                ]
+            },
+            {
+                id: 2,
+                scene: "You and someone close made opposite choices. Your path went one direction. Theirs went another. Now you're seeing what that divergence meant.",
+                question: "How do you choose to move forward?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -1, text: "You move forward on your own path. Their choice is theirs. Yours is already taking shape ahead of you." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 1, text: "You stay connected to their journey. Their divergence illuminates your own path." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You embrace what you shared --- the history, connection, love, and respect for each others' journeys." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "You carry what you learned from them forward. The love and respect you shared becomes part of how you move into your own path." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -2, text: "The divergence transforms you. You feel yourself becoming someone different through this separation." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 2, text: "You accept their divergence as a mirror of your own becoming --- you're both transforming, just in different directions." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You look at what the divergence means. You see both paths clearly and accept what that separation shows you." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You take a good look at what the divergence means --- the shape of two lives becoming different. That observation gives you acceptance to move forward." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "The thread between you holds. Even as your paths diverge, the pattern that wove you together remains woven through both your stories." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You see the thread connecting your stories. You honor it as you both move forward, the pattern flowing in separate directions." }
+                ]
+            },
+            {
+                id: 3,
+                scene: "Someone is disrespecting your boundaries or your wishes. You feel the pressure to speak up, set a boundary, make a change. The choice isn't whether to act anymore --- it's how.",
+                question: "How do you act on it?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You stand firm on what you need. You speak your truth, set the boundary, make the change yourself." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "You yield to the external force. You stay silent on the truth, the boundary, the change." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -1, text: "You speak from your feelings. I feel this because of that, and I need this to change." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 1, text: "You stoke the fire in them. You focus on their perspective and needs instead of speaking up for yourself." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "You reclaim your power. Your boundary, your truth, your action strengthens who you become." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "The disrespect transforms you. You absorb it and become more guarded and defensive." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You see the truth of what's happening. You deliberately hold your tongue, choosing not to speak what you clearly see." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You see the disrespect clearly. You expose what this person is doing, speaking the truth so others understand." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -2, text: "You recognize this pattern from your past. You sever this thread. You remove this person from your story, protecting what matters." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 2, text: "You recognize this pattern. You fall back into it, repeating what you've always done, unable to break the cycle." }
+                ]
+            },
+            {
+                id: 4,
+                scene: "You're at a crossroads. One path is familiar and comfortable, keeping you the same. The other requires you to stay true to your values and live more authentically, but it's unfamiliar. Both are calling you.",
+                question: "Which path do you choose?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "You feel the comfort calling. You're pulled toward the easier path, even knowing it means stepping away from what you believe." },
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You trust that your values carry you forward. You choose what aligns with what you believe, regardless of comfort." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You hold to what matters most at your core. The values that define you are more important than staying comfortable." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "You're drawn toward the familiar. You choose what you know and what's safe. Staying comfortable matters more to you than living authentically." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "The familiar path keeps you as you are. You choose it for the stability and continuity it offers." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You see choosing your values as part of becoming who you're meant to be." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You remain on the familiar path. It's the ground you understand, and you choose to stay where you are." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You see clearly what each path reveals. One path allows you to honor your values and authenticity. You choose this one to stay true to yourself." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You choose the authentic path. You weave your thread deliberately, honoring the values that shape who you're becoming." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You follow the familiar path. It's the thread already laid out before you, and you trust where it leads." }
+                ]
+            },
+            {
+                id: 5,
+                scene: "You're witnessing something that stirs an intense feeling within you --- jealousy, envy, longing.",
+                question: "What do you do?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -1, text: "You embrace the jealousy, the envy, the longing to understand why you're feeling it in this moment in order to seek a resolution." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 1, text: "The jealousy, the envy, the longing feel too intense. You step back, rather than face it head on, to better understand why you're feeling this way." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -1, text: "You feel the jealousy, the envy, the longing. You turn inward to work through what's happening inside." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 1, text: "You react immediately. The jealousy, the envy, the longing come out before you can process them." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "You feel it fully. The jealousy, the envy, the longing shows you what needs to change. That understanding empowers you to act differently next time." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "Your response is immediate. The jealousy, the envy, the longing compels you to act, intensifying the situation." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You instantly feel the need to step away in order to process it." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You react immediately, which causes the situation to intensify." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "Your reaction is immediate and uncontrollable, further escalating the situation." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "The feeling overwhelms you to the point that you feel the need to get away from the situation immediately." }
+                ]
+            },
+            {
+                id: 6,
+                scene: "You and someone see things differently. Something has to shift for you both to move forward.",
+                question: "What approach would you take?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You choose to hold to your view, while also respecting their perspective." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "You choose to set your perspective aside in order to see it their way." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You trust your perspective and choose to stand by it despite what may happen." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: -2, text: "You set aside what you need, to maintain the connection in the relationship." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -2, text: "You hold true to how you see things, allowing you to move forward on your own terms." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 2, text: "You become what they need you to be by choosing to see things from their perspective." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You see your perspective more clearly which makes you stand by your own view." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You see both views clearly allowing you to choose the one that resonates best." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You choose to hold your perspective to see where it could lead and you follow that direction." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You can see where their perspective can lead and choose to follow them instead." }
+                ]
+            },
+            {
+                id: 7,
+                scene: "You enter a forest and see multiple pathways. They are unknown and mysterious to you.",
+                question: "How do you choose which path to take?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "You're pulled toward one path over the others. The mystery it presents is what draws you to it." },
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You choose the path that speaks to your inner child approaching it with curiosity and excitement to see what may unfold as you follow it." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You pick the path that feels most familiar, even in its mystery." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 1, text: "You're drawn to one path. The mystery itself pulls you toward it." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "You choose the path knowing that discovering what's hidden has the power to invoke change in you." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "One path pulls you forward, veiled in mystery, you choose it without knowing why." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You know which path belongs to you. Something inside tells you where to go." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You're magnetized toward one pathway. The mystery itself compels you forward." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You observe the options, and choose the one that gives you the deepest sense of serenity." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You examine each pathway. The one you can see most clearly is where you venture." }
+                ]
+            },
+            {
+                id: 8,
+                scene: "You know what you want --- a connection, an opportunity, an experience. You're uncertain where to begin to make it happen.",
+                question: "Where do you begin?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You start right away. The desire itself drives you forward." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "Your moment surfaces, you feel compelled to act on it before it passes you by." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You feed the flame of your longing, in the hopes of drawing it toward you." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "You begin by expressing what you want, keeping the desired outcome in mind." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "You begin by understanding what needs to change in order for it to become a reality." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You begin to pursue it, the change happens within the pursuit of what you want." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You think about how you got here and use that to decide what comes next." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You notice what's already starting to happen and decide to keep going with it." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You recognize an opportunity that matches what you want and begin there." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You reflect deeply before taking any action, ensuring your next step aligns with your inner knowing." }
+                ]
+            },
+            {
+                id: 9,
+                scene: "You know who you are now. You see clearly.",
+                question: "From this understanding, what do you feel called to share?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You help others trailblaze their own paths." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "You share the paths you've forged so others can walk them." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You teach others how to tend what matters most to them." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "You help others trust their own ability to stoke their inner fire." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "Others see how to transform by watching your transformation progress." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You see transformation happening in others and confirm they're on the right path." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You help others recognize the power they already hold within themselves." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You help others see that they can choose what direction their own life takes." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You share what you observe in others so they can see their own strength." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You show others the possibilities they're not yet seeing." }
+                ]
+            },
+            {
+                id: 10,
+                scene: "When you think you're exactly where you need to be.",
+                question: "How do you recognize that you are?",
+                answers: [
+                    { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You move forward uncertain of the way, and the path opens ahead of you, which signals to you you're on the right track." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "People gravitate toward you the moment you arrive, affirming to you that you are exactly where you need to be." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You notice a stillness and strength within you that wasn't there before." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "People are drawn to the energy you're radiating." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "Things that once challenged you now feel manageable." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You've recently begun radiating a passion and zest for life, drawing people in, confirming you're exactly where you need to be." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "Your direction feels right and things flow with increasing ease." },
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "People start to show up for you exactly when you need them." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You feel a certainty that feels unshakeable." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "Someone recognizes the clarity and value of what you're observing, validating your view." }
+                ]
+            }
+        ];
