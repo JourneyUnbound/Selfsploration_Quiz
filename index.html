@@ -1,5 +1,3 @@
-I'll create the complete Journey Quiz code with all your specifications. Here's the full implementation:
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,50 +55,8 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             color: var(--ocean-mist);
         }
 
-        .privacy-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(18, 15, 115, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .privacy-card {
-            background: white;
-            color: var(--deep-twilight);
-            padding: 3rem;
-            border-radius: 12px;
-            max-width: 500px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .privacy-card h2 {
-            color: var(--indigo);
-            margin-bottom: 1.5rem;
-        }
-
-        .privacy-option {
-            padding: 1rem;
-            margin: 1rem 0;
-            border: 2px solid var(--bondi-blue);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .privacy-option:hover {
-            background: var(--bondi-blue);
-            color: white;
-            border-color: var(--cotton-candy);
-        }
-
         .quiz-section {
-            display: none;
+            display: block; /* Modified to show by default for testing */
         }
 
         .question-card {
@@ -151,6 +107,8 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
         .answer-btn.selected {
             background: var(--cotton-candy);
             border-color: var(--indigo);
+            color: var(--deep-twilight);
+            font-weight: bold;
         }
 
         .nav-buttons {
@@ -168,12 +126,19 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             transition: all 0.3s;
         }
 
+        .btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.3);
+            cursor: not-allowed;
+            border: none;
+        }
+
         .btn-primary {
             background: var(--cotton-candy);
             color: var(--deep-twilight);
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             background: var(--indigo);
             color: white;
         }
@@ -184,7 +149,7 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             color: var(--cotton-candy);
         }
 
-        .btn-secondary:hover {
+        .btn-secondary:hover:not(:disabled) {
             background: var(--cotton-candy);
             color: var(--deep-twilight);
         }
@@ -243,70 +208,22 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             color: var(--deep-twilight);
         }
 
-        .age-gate {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--deep-twilight);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-        }
-
-        .age-gate-content {
-            text-align: center;
-            padding: 3rem;
-        }
-
         .hidden {
             display: none !important;
         }
     </style>
 </head>
 <body>
-    <!-- Age Verification Gate -->
-    <div class="age-gate" id="ageGate">
-        <div class="age-gate-content">
-            <h1 style="color: var(--cotton-candy);">Journey Unbound™</h1>
-            <p style="margin: 2rem 0;">This platform contains adult exploration themes.</p>
-            <p>You must be 18+ to continue.</p>
-            <button class="btn btn-primary" onclick="verifyAge()" style="margin-top: 2rem;">I am 18 or older</button>
-        </div>
-    </div>
 
-    <!-- Privacy Mode Selection -->
-    <div class="privacy-modal hidden" id="privacyModal">
-        <div class="privacy-card">
-            <h2>Choose Your Privacy Mode</h2>
-            <p style="margin-bottom: 1.5rem;">Your data stays under your control:</p>
-            <div class="privacy-option" onclick="selectPrivacy('anonymous')">
-                <strong>🕶️ Anonymous Mode</strong><br>
-                Data deleted when browser closes
-            </div>
-            <div class="privacy-option" onclick="selectPrivacy('local')">
-                <strong>💾 Local-Only Mode</strong> (recommended)<br>
-                Data stored on your device only
-            </div>
-            <div class="privacy-option" onclick="selectPrivacy('cloud')">
-                <strong>☁️ Cloud Sync Mode</strong><br>
-                Zero-knowledge encrypted storage
-            </div>
-        </div>
-    </div>
-
-    <!-- Quiz Container -->
     <div class="container" id="quizContainer">
         <div class="logo-header">
             <h1>Journey Unbound™</h1>
-            <p class="tagline">Illuminate your storey</p>
+            <p class="tagline">Illuminate your story</p>
         </div>
 
         <div class="quiz-section" id="questionSection">
             <div class="progress-indicator" id="progressIndicator">
-                Question <span id="currentQuestion">1</span> of 10
+                Question <span id="currentQuestionNumber">1</span> of 10
             </div>
 
             <div class="question-card">
@@ -316,21 +233,21 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             </div>
 
             <div class="nav-buttons">
-                <button class="btn btn-secondary" onclick="prevQuestion()">Previous</button>
-                <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next</button>
             </div>
         </div>
 
         <div class="result-section" id="resultSection">
-            <h2 class="result-title" id="resultTitle"></h2>
+            <h2 class="result-title">Your Journey Archetype</h2>
             
             <div class="mythology-box">
-                <h3 class="myth-title" id="mythTitle"></h3>
-                <div class="myth-summary" id="mythSummary"></div>
-                <div class="core-message" id="coreMessage"></div>
+                <h3 class="myth-title" id="resultArchetype"></h3>
+                <div class="myth-summary">
+                    <p>Based on your selections, you primarily embody this identity. Your current core energetic path tracks closely with your chosen system mechanics.</p>
+                </div>
+                <div class="core-message" id="resultOrientation"></div>
             </div>
-
-            <p style="margin: 2rem 0; font-size: 1.2rem;" id="resultDescription"></p>
 
             <button class="btn btn-primary restart-btn" onclick="retakeQuiz()">Retake Journey</button>
         </div>
@@ -338,23 +255,22 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
 
     <script>
         // ========== DATA STRUCTURES ==========
-        
         const QUESTIONS = [
             {
                 id: 1,
                 scene: "You're standing at the edge of a chasm. Something calls from the other side.",
                 question: "What is your first instinct?",
                 answers: [
-                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "An eagerness to be pulled toward it --- whatever is calling me is worth going to meet." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "An eagerness to be pulled toward it — whatever is calling me is worth going to meet." },
                     { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You choose to walk across it. You commit to the crossing and embrace the change that comes with it." },
-                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "A moment of care for what I keep --- the people, the place, the life I've tended, the centre of it all carried with me wherever I go." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "A moment of care for what I keep — the people, the place, the life I've tended, the centre of it all carried with me wherever I go." },
                     { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "The flame spreads through you and carries you forward. It expands and moves you toward the crossing." },
-                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You feel the chasm activate within you --- a transformation that's alive and expansive." },
-                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "The chasm remakes you. You feel yourself being reshaped by its presence --- transformed by what it demands of you." },
-                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "A stillness --- the knowing was already deep within me, waiting. I want to let it speak before I cross the threshold." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 1, text: "You feel the chasm activate within you — a transformation that's alive and expansive." },
+                    { archetype: 'Metamorph', orientation: 'Bound', score: -1, text: "The chasm remakes you. You feel yourself being reshaped by its presence — transformed by what it demands of you." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "A stillness — the knowing was already deep within me, waiting. I want to let it speak before I cross the threshold." },
                     { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You look into the chasm and see what calls from the other side. Your sight pierces through to what's waiting." },
-                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "A recognition --- this edge has similarities to others I've stood at, and the thread between them is what draws me forward." },
-                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You recognize this edge in your story. The pattern has always been leading you here --- and you accept that path." }
+                    { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "A recognition — this edge has similarities to others I've stood at, and the thread between them is what draws me forward." },
+                    { archetype: 'Threader', orientation: 'Bound', score: -1, text: "You recognize this edge in your story. The pattern has always been leading you here — and you accept that path." }
                 ]
             },
             {
@@ -364,19 +280,19 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
                 answers: [
                     { archetype: 'Pathwalker', orientation: 'Bound', score: -1, text: "You move forward on your own path. Their choice is theirs. Yours is already taking shape ahead of you." },
                     { archetype: 'Pathwalker', orientation: 'Unbound', score: 1, text: "You stay connected to their journey. Their divergence illuminates your own path." },
-                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You embrace what you shared --- the history, connection, love, and respect for each others' journeys." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You embrace what you shared — the history, connection, love, and respect for each others' journeys." },
                     { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "You carry what you learned from them forward. The love and respect you shared becomes part of how you move into your own path." },
                     { archetype: 'Metamorph', orientation: 'Bound', score: -2, text: "The divergence transforms you. You feel yourself becoming someone different through this separation." },
-                    { archetype: 'Metamorph', orientation: 'Unbound', score: 2, text: "You accept their divergence as a mirror of your own becoming --- you're both transforming, just in different directions." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', score: 2, text: "You accept their divergence as a mirror of your own becoming — you're both transforming, just in different directions." },
                     { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You look at what the divergence means. You see both paths clearly and accept what that separation shows you." },
-                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You take a good look at what the divergence means --- the shape of two lives becoming different. That observation gives you acceptance to move forward." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', score: 2, text: "You take a good look at what the divergence means — the shape of two lives becoming different. That observation gives you acceptance to move forward." },
                     { archetype: 'Threader', orientation: 'Bound', score: -1, text: "The thread between you holds. Even as your paths diverge, the pattern that wove you together remains woven through both your stories." },
                     { archetype: 'Threader', orientation: 'Unbound', score: 1, text: "You see the thread connecting your stories. You honor it as you both move forward, the pattern flowing in separate directions." }
                 ]
             },
             {
                 id: 3,
-                scene: "Someone is disrespecting your boundaries or your wishes. You feel the pressure to speak up, set a boundary, make a change. The choice isn't whether to act anymore --- it's how.",
+                scene: "Someone is disrespecting your boundaries or your wishes. You feel the pressure to speak up, set a boundary, make a change. The choice isn't whether to act anymore — it's how.",
                 question: "How do you act on it?",
                 answers: [
                     { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You stand firm on what you need. You speak your truth, set the boundary, make the change yourself." },
@@ -410,7 +326,7 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             },
             {
                 id: 5,
-                scene: "You're witnessing something that stirs an intense feeling within you --- jealousy, envy, longing.",
+                scene: "You're witnessing something that stirs an intense feeling within you — jealousy, envy, longing.",
                 question: "What do you do?",
                 answers: [
                     { archetype: 'Pathwalker', orientation: 'Bound', score: -1, text: "You embrace the jealousy, the envy, the longing to understand why you're feeling it in this moment in order to seek a resolution." },
@@ -433,7 +349,7 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
                     { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You choose to hold to your view, while also respecting their perspective." },
                     { archetype: 'Pathwalker', orientation: 'Unbound', score: 2, text: "You choose to set your perspective aside in order to see it their way." },
                     { archetype: 'Ember-Keeper', orientation: 'Bound', score: -2, text: "You trust your perspective and choose to stand by it despite what may happen." },
-                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: -2, text: "You set aside what you need, to maintain the connection in the relationship." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', score: 2, text: "You set aside what you need, to maintain the connection in the relationship." },
                     { archetype: 'Metamorph', orientation: 'Bound', score: -2, text: "You hold true to how you see things, allowing you to move forward on your own terms." },
                     { archetype: 'Metamorph', orientation: 'Unbound', score: 2, text: "You become what they need you to be by choosing to see things from their perspective." },
                     { archetype: 'Deep Eye', orientation: 'Bound', score: -2, text: "You see your perspective more clearly which makes you stand by your own view." },
@@ -461,7 +377,7 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
             },
             {
                 id: 8,
-                scene: "You know what you want --- a connection, an opportunity, an experience. You're uncertain where to begin to make it happen.",
+                scene: "You know what you want — a connection, an opportunity, an experience. You're uncertain where to begin to make it happen.",
                 question: "Where do you begin?",
                 answers: [
                     { archetype: 'Pathwalker', orientation: 'Bound', score: -2, text: "You start right away. The desire itself drives you forward." },
@@ -511,3 +427,144 @@ I'll create the complete Journey Quiz code with all your specifications. Here's 
                 ]
             }
         ];
+
+        // ========== STATE MANAGEMENT ==========
+        let currentQuestionIdx = 0;
+        let selectedAnswers = new Array(QUESTIONS.length).fill(null);
+
+        // ========== RUN QUIZ INITIALIZATION ==========
+        window.onload = function() {
+            renderQuestion();
+        };
+
+        // ========== CORE FUNCTIONS ==========
+        function renderQuestion() {
+            const currentQuestion = QUESTIONS[currentQuestionIdx];
+            
+            // Update UI Counters
+            document.getElementById("currentQuestionNumber").innerText = currentQuestionIdx + 1;
+            document.getElementById("sceneSetting").innerText = currentQuestion.scene;
+            document.getElementById("questionText").innerText = currentQuestion.question;
+            
+            // Set up Back Button state
+            document.getElementById("prevBtn").disabled = (currentQuestionIdx === 0);
+            
+            // Change Next Button text on final question
+            const nextBtn = document.getElementById("nextBtn");
+            if (currentQuestionIdx === QUESTIONS.length - 1) {
+                nextBtn.innerText = "View Results";
+            } else {
+                nextBtn.innerText = "Next";
+            }
+
+            // Render Answer Buttons
+            const optionsContainer = document.getElementById("answerOptions");
+            optionsContainer.innerHTML = "";
+
+            currentQuestion.answers.forEach((ans, index) => {
+                const button = document.createElement("button");
+                button.className = "answer-btn";
+                if (selectedAnswers[currentQuestionIdx] === index) {
+                    button.classList.add("selected");
+                }
+                button.innerText = ans.text;
+                button.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(answerIndex) {
+            selectedAnswers[currentQuestionIdx] = answerIndex;
+            
+            // Re-render quickly to display selection color styling
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            // Guard clause: Ensure tester selects an option before skipping ahead
+            if (selectedAnswers[currentQuestionIdx] === null) {
+                alert("Please select an answer before continuing your journey.");
+                return;
+            }
+
+            if (currentQuestionIdx < QUESTIONS.length - 1) {
+                currentQuestionIdx++;
+                renderQuestion();
+            } else {
+                calculateAndShowResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                currentQuestionIdx--;
+                renderQuestion();
+            }
+        }
+
+        function calculateAndShowResults() {
+            // Archetype Counters
+            const archetypeScores = {
+                'Pathwalker': 0,
+                'Ember-Keeper': 0,
+                'Metamorph': 0,
+                'Deep Eye': 0,
+                'Threader': 0
+            };
+            
+            // Bound vs Unbound Total Shift Tracker
+            let totalOrientationScore = 0;
+
+            // Process selections
+            selectedAnswers.forEach((ansIdx, qIdx) => {
+                const answerData = QUESTIONS[qIdx].answers[ansIdx];
+                
+                // Increment Archetype tallies
+                archetypeScores[answerData.archetype] += 1;
+                
+                // Track net orientation velocity 
+                totalOrientationScore += answerData.score;
+            });
+
+            // Find Archetype with highest frequency chosen
+            let primaryArchetype = 'Pathwalker';
+            let maxCount = -1;
+            for (const [arch, count] of Object.entries(archetypeScores)) {
+                if (count > maxCount) {
+                    maxCount = count;
+                    primaryArchetype = arch;
+                }
+            }
+
+            // Determine Net Orientation Status
+            let finalOrientation = "";
+            if (totalOrientationScore > 0) {
+                finalOrientation = "Your core movement profile trends towards: Unbound (Expansive, Magnetic, Free-Flowing Evolution)";
+            } else if (totalOrientationScore < 0) {
+                finalOrientation = "Your core movement profile trends towards: Bound (Grounded, Dedicated, Structure-Honoring Evolution)";
+            } else {
+                finalOrientation = "Your core movement profile rests in: Perfect Equilibrium (Balanced Integration of Boundaries & Freedom)";
+            }
+
+            // Hide Quiz Interface and show calculated properties
+            document.getElementById("questionSection").style.display = "none";
+            
+            const resultSection = document.getElementById("resultSection");
+            resultSection.style.display = "block";
+            
+            document.getElementById("resultArchetype").innerText = primaryArchetype;
+            document.getElementById("resultOrientation").innerText = finalOrientation;
+        }
+
+        function retakeQuiz() {
+            currentQuestionIdx = 0;
+            selectedAnswers = new Array(QUESTIONS.length).fill(null);
+            
+            document.getElementById("resultSection").style.display = "none";
+            document.getElementById("questionSection").style.display = "block";
+            
+            renderQuestion();
+        }
+    </script>
+</body>
+</html>
