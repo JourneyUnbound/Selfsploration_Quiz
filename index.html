@@ -267,7 +267,7 @@
     <div class="container" id="quizContainer">
         <div class="logo-header">
             <h1>Journey Unbound™</h1>
-            <p class="tagline">Illuminate your storey</p>
+            <p class="tagline">Illuminate your story</p>
         </div>
 
         <!-- Main Quiz Interface -->
@@ -318,7 +318,7 @@
         // WEIGHT ENGINE: Linear Weight Progression Q1-Q10 (1.0 to 2.0)
         const WEIGHTS = [1.0, 1.111, 1.222, 1.333, 1.444, 1.556, 1.667, 1.778, 1.889, 2.0];
 
-        // VERBATIM RESULTS DATABASE MAPPED TO THE FINAL PARINGS
+        // VERBATIM RESULTS DATABASE MAPPED TO THE FINAL PAIRINGS
         const ARCHETYPE_CONTENT = {
             "Pathwalker": {
                 "Bound": {
@@ -402,7 +402,7 @@
             }
         };
 
-        // ENTIRE MASTER ARRAY RETAINING EXACT ASSIGNED DIRECTIONAL POLARITIES
+        // MASTER ARRAY WITH INTEGRATED HIGH-ALIGNMENT EMBODIED REWRITES
         const QUESTIONS = [
             {
                 id: 1,
@@ -440,70 +440,70 @@
             },
             {
                 id: 3,
-                scene: "Someone is disrespecting your boundaries or your wishes. You feel the pressure to speak up, set a boundary, make a change. The choice isn't whether to act anymore — it's how.",
-                question: "How do you act on it?",
+                scene: "You are collaborating with someone on a shared vision. A moment arrives where you realize your personal approach to the project requires a clearer expression of your core values to keep the partnership harmonious.",
+                question: "How do you choose to express what matters to you in this moment?",
                 answers: [
-                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -2, text: "You stand firm on what you need. You speak your truth, set the boundary, make the change yourself." },
-                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 2, text: "You yield to the external force. You stay silent on the truth, the boundary, the change." },
-                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -1, text: "You speak from your feelings. I feel this because of that, and I need this to change." },
-                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: 1, text: "You stoke the fire in them. You focus on their perspective and needs instead of speaking up for yourself." },
-                    { archetype: 'Metamorph', orientation: 'Bound', direction: -1, text: "You reclaim your power. Your boundary, your truth, your action strengthens who you become." },
-                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 1, text: "The disrespect transforms you. You absorb it and become more guarded and defensive." },
-                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You see the truth of what's happening. You deliberately hold your tongue, choosing not to speak what you clearly see." },
-                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You see the disrespect clearly. You expose what this person is doing, speaking the truth so others understand." },
-                    { archetype: 'Threader', orientation: 'Bound', direction: -2, text: "You recognize this pattern from your past. You sever this thread. You remove this person from your story, protecting what matters." },
-                    { archetype: 'Threader', orientation: 'Unbound', direction: 2, text: "You recognize this pattern. You fall back into it, repeating what you've always done, unable to break the cycle." }
+                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -2, text: "You communicate your vision with clarity. You share your structural alignment openly, ensuring the partnership moves forward with shared understanding." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 2, text: "You lean into collaboration, gracefully integrating their ideas and expanding your own perspective to find a collaborative middle ground." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -1, text: "You speak directly from the heart, sharing what deeply resonates with you internally to enrich the emotional foundation of the connection." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: 1, text: "You focus entirely on illuminating their unique passion, championing their strengths and supporting their creative contribution to the vision." },
+                    { archetype: 'Metamorph', orientation: 'Bound', direction: -1, text: "You use this moment to clarify your individual growth, strengthening your personal evolution through a beautifully articulated contribution." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 1, text: "You allow the shared synergy to organically evolve your perspective, welcoming the shift as a creative expansion of your own process." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You take a mindful pause to anchor your insights internally, choosing to reflect deeply on the big picture before introducing new ideas." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You bring the underlying potential of the dynamic to light, clearly naming the collective strengths so everyone feels seen and understood." },
+                    { archetype: 'Threader', orientation: 'Bound', direction: -2, text: "You look back at what has historically brought you success, intentionally weaving those proven, stable patterns into this current collaboration." },
+                    { archetype: 'Threader', orientation: 'Unbound', direction: 2, text: "You trust the organic flow of the moment, adapting gracefully to the timeline and allowing the natural rhythm of the partnership to unfold." }
                 ]
             },
             {
                 id: 4,
-                scene: "You're at a crossroads. One path is familiar and comfortable, keeping you the same. The other requires you to stay true to your values and live more authentically, but it's unfamiliar. Both are calling you.",
-                question: "Which path do you choose?",
+                scene: "You are standing at a threshold where a familiar, comfortable rhythm presents itself on one side, while a fresh opportunity to deeply express your evolving values opens up on the other.",
+                question: "Which aspect of your journey do you choose to honor in this moment?",
                 answers: [
-                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 2, text: "You feel the comfort calling. You're pulled toward the easier path, even knowing it means stepping away from what you believe." },
-                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -2, text: "You trust that your values carry you forward. You choose what aligns with what you believe, regardless of comfort." },
-                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -2, text: "You hold to what matters most at your core. The values that define you are more important than staying comfortable." },
-                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: 2, text: "You're drawn toward the familiar. You choose what you know and what's safe. Staying comfortable matters more to you than living authentically." },
-                    { archetype: 'Metamorph', orientation: 'Bound', direction: -1, text: "The familiar path keeps you as you are. You choose it for the stability and continuity it offers." },
-                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 1, text: "You see choosing your values as part of becoming who you're meant to be." },
-                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You remain on the familiar path. It's the ground you understand, and you choose to stay where you are." },
-                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You see clearly what each path reveals. One path allows you to honor your values and authenticity. You choose this one to stay true to yourself." },
-                    { archetype: 'Threader', orientation: 'Bound', direction: -1, text: "You choose the authentic path. You weave your thread deliberately, honoring the values that shape who you're becoming." },
-                    { archetype: 'Threader', orientation: 'Unbound', direction: 1, text: "You follow the familiar path. It's the thread already laid out before you, and you trust where it leads." }
+                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 2, text: "You embrace the grounding comfort of what you know, using it as a stable foundation before choosing your next step." },
+                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -2, text: "You trust your path to unfold as you step into the new space, letting your core values confidently guide your way." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -2, text: "You hold to the steady inner flame of your core values, recognizing that your internal alignment is your true compass." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: 2, text: "You choose the safety and warmth of the familiar sanctuary, nurturing the quiet space you've already beautifully created." },
+                    { archetype: 'Metamorph', orientation: 'Bound', direction: -1, text: "You choose the continuity of your current form, finding wisdom and strength in maintaining a stable rhythm." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 1, text: "You welcome the unfamiliar choice as a conscious catalyst for your personal evolution and transformation." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You stay anchored on the ground you know best, letting your deep observation bring clarity to your current space." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You perceive exactly what each choice offers, choosing the fresh path because it fully mirrors your inner clarity." },
+                    { archetype: 'Threader', orientation: 'Bound', direction: -1, text: "You choose the expanding path, intentionally weaving your personal values into a brand new pattern of your story." },
+                    { archetype: 'Threader', orientation: 'Unbound', direction: 1, text: "You follow the established thread before you, trusting the natural design that has safely supported you so far." }
                 ]
             },
             {
                 id: 5,
-                scene: "You're witnessing something that stirs an intense feeling within you — jealousy, envy, longing.",
-                question: "What do you do?",
+                scene: "You witness someone else embodying an extraordinary expression of creativity, freedom, or alignment that strikes a deep chord within you.",
+                question: "What is your natural response to this moment of inspiration?",
                 answers: [
-                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -1, text: "You embrace the jealousy, the envy, the longing to understand why you're feeling it in this moment in order to seek a resolution." },
-                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 1, text: "The jealousy, the envy, the longing feel too intense. You step back, rather than face it head on, to better understand why you're feeling this way." },
-                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -1, text: "You feel the jealousy, the envy, the longing. You turn inward to work through what's happening inside." },
-                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: 1, text: "You react immediately. The jealousy, the envy, the longing come out before you can process them." },
-                    { archetype: 'Metamorph', orientation: 'Bound', direction: -1, text: "You feel it fully. The jealousy, the envy, the longing shows you what needs to change. That understanding empowers you to act differently next time." },
-                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 1, text: "Your response is immediate. The jealousy, the envy, the longing compels you to act, intensifying the situation." },
-                    { archetype: 'Threader', orientation: 'Bound', direction: -1, text: "You instantly feel the need to step away in order to process it." },
-                    { archetype: 'Threader', orientation: 'Unbound', direction: 1, text: "You react immediately, which causes the situation to intensify." },
-                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "Your reaction is immediate and uncontrollable, further escalating the situation." },
-                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "The feeling overwhelms you to the point that you feel the need to get away from the situation immediately." }
+                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -1, text: "You fully welcome the feeling, using it to clearly identify the exact pathways you are ready to forge in your own life." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 1, text: "You take a gentle step back to marvel at the possibility, giving yourself space to contemplate how that vision fits your journey." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -1, text: "You turn completely inward, using the warmth of that external spark to rekindle the sacred fire of your own desires." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: 1, text: "You express your appreciation immediately, letting the shared inspiration flow outward to celebrate the collective fire." },
+                    { archetype: 'Metamorph', orientation: 'Bound', direction: -1, text: "You internalize the moment as a powerful reminder of what is ready to shift and transform inside your own identity." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 1, text: "You move dynamically into action, letting the immediate surge of creative inspiration shift your day into something new." },
+                    { archetype: 'Threader', orientation: 'Bound', direction: -1, text: "You take an intentional pause, mapping out how to elegantly weave this newly discovered aesthetic into your life." },
+                    { archetype: 'Threader', orientation: 'Unbound', direction: 1, text: "You jump into the flow right away, trusting the pattern to naturally integrate this fresh energy as it unfolds." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You let the depth of your inner witness fully observe the experience, anchoring the feeling into your deep reservoir of wisdom." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You look through the surface to see the broader potential, letting the sight of what's possible lift your focus to new horizons." }
                 ]
             },
             {
                 id: 6,
-                scene: "You and someone see things differently. Something has to shift for you both to move forward.",
-                question: "What approach would you take?",
+                scene: "You and a close companion hold unique, distinct perspectives on a meaningful topic, and you are exploring how to bring both viewpoints into harmony.",
+                question: "What approach do you feel called to take?",
                 answers: [
-                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -2, text: "You choose to hold to your view, while also respecting their perspective." },
-                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 2, text: "You choose to set your perspective aside in order to see it their way." },
-                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -2, text: "You trust your perspective and choose to stand by it despite what may happen." },
-                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: -2, text: "You set aside what you need, to maintain the connection in the relationship." },
-                    { archetype: 'Metamorph', orientation: 'Bound', direction: -2, text: "You hold true to how you see things, allowing you to move forward on your own terms." },
-                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 2, text: "You become what they need you to be by choosing to see things from their perspective." },
-                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You see your perspective more clearly which makes you stand by your own view." },
-                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You see both views clearly allowing you to choose the one that resonates best." },
-                    { archetype: 'Threader', orientation: 'Bound', direction: -1, text: "You choose to hold your perspective to see where it could lead and you follow that direction." },
-                    { archetype: 'Threader', orientation: 'Unbound', direction: 1, text: "You can see where their perspective can lead and choose to follow them instead." }
+                    { archetype: 'Pathwalker', orientation: 'Bound', direction: -2, text: "You anchor yourself confidently in your own view, while maintaining absolute respect for the distinct path they are walking." },
+                    { archetype: 'Pathwalker', orientation: 'Unbound', direction: 2, text: "You playfully immerse yourself in their perspective, eager to see how the world looks from their specific vantage point." },
+                    { archetype: 'Ember-Keeper', orientation: 'Bound', direction: -2, text: "You protect the integrity of your personal values, standing by your heart's truth with quiet, unwavering strength." },
+                    { archetype: 'Ember-Keeper', orientation: 'Unbound', direction: -2, text: "You prioritize the beautiful bridge of connection between you, holding space for relational harmony above all else." },
+                    { archetype: 'Metamorph', orientation: 'Bound', direction: -2, text: "You hold fast to your interpretation, using the conversation as a crystalline container to clarify your own development." },
+                    { archetype: 'Metamorph', orientation: 'Unbound', direction: 2, text: "You fluidly adapt to the moment, letting their insights organically expand and change the shape of your current thinking." },
+                    { archetype: 'Deep Eye', orientation: 'Bound', direction: -2, text: "You look deeply at your own perspective, letting your inner observer bring absolute certainty to your stance." },
+                    { archetype: 'Deep Eye', orientation: 'Unbound', direction: 2, text: "You hold both viewpoints simultaneously with perfect equity, appreciating how the contrast creates a grander picture." },
+                    { archetype: 'Threader', orientation: 'Bound', direction: -1, text: "You follow the strand of your own reasoning to its conclusion, trusting where your dedicated line of thought leads." },
+                    { archetype: 'Threader', orientation: 'Unbound', direction: 1, text: "You track the trajectory of their magnificent idea, curious to see how the pattern unfolds when you follow their lead." }
                 ]
             },
             {
@@ -578,31 +578,25 @@
         let currentQuestionIdx = 0;
         let selectedAnswers = new Array(QUESTIONS.length).fill(null);
         let archetypeDiscoveryOrder = [];
-        
-        // This array keeps track of WHICH subset of 3 choices was selected for each question
         let activeQuestionSubsets = new Array(QUESTIONS.length).fill(null);
 
         window.onload = function() {
             loadQuestionLayout();
         };
 
-        // NEW METHOD: Generates or fetches the static 3-choice layout pool for the question
         function loadQuestionLayout() {
             const currentQuestion = QUESTIONS[currentQuestionIdx];
 
-            // If we haven't created a layout subset for this question yet, build it once!
             if (activeQuestionSubsets[currentQuestionIdx] === null) {
                 let choicePool = currentQuestion.answers.map((ans, idx) => ({ data: ans, originalIndex: idx }));
                 let subset = [];
 
-                // Grab up to 3 options randomly
                 while (subset.length < 3 && choicePool.length > 0) {
                     const randIndex = Math.floor(Math.random() * choicePool.length);
                     subset.push(choicePool[randIndex]);
                     choicePool.splice(randIndex, 1);
                 }
 
-                // Scramble their display order once so it's not alphabetical
                 for (let i = subset.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [subset[i], subset[j]] = [subset[j], subset[i]];
@@ -614,7 +608,6 @@
             renderQuestion();
         }
 
-        // RENDER ENGINE: Cleanly updates the UI elements based on the locked layout pool
         function renderQuestion() {
             const currentQuestion = QUESTIONS[currentQuestionIdx];
             document.getElementById("currentQuestionNumber").innerText = currentQuestionIdx + 1;
@@ -629,14 +622,12 @@
             const optionsContainer = document.getElementById("answerOptions");
             optionsContainer.innerHTML = "";
 
-            // Pull the locked array of 3 options we generated in loadQuestionLayout
             const lockedSubset = activeQuestionSubsets[currentQuestionIdx];
 
             lockedSubset.forEach((item) => {
                 const button = document.createElement("button");
                 button.className = "answer-btn";
                 
-                // Keep highlighting perfectly bound to the original choice index
                 if (selectedAnswers[currentQuestionIdx] === item.originalIndex) {
                     button.classList.add("selected");
                 }
@@ -655,7 +646,6 @@
                 archetypeDiscoveryOrder.push(arch);
             }
             
-            // Re-render only to refresh the visual button state—no text will scramble now!
             renderQuestion();
         }
 
@@ -667,7 +657,7 @@
 
             if (currentQuestionIdx < QUESTIONS.length - 1) {
                 currentQuestionIdx++;
-                loadQuestionLayout(); // Generates/loads the pool for the next slide safely
+                loadQuestionLayout();
             } else {
                 calculateAndShowResults();
             }
@@ -676,7 +666,7 @@
         function prevQuestion() {
             if (currentQuestionIdx > 0) {
                 currentQuestionIdx--;
-                loadQuestionLayout(); // Loads the historical frozen pool for the past slide perfectly
+                loadQuestionLayout();
             }
         }
 
@@ -732,7 +722,7 @@
         function retakeQuiz() {
             currentQuestionIdx = 0;
             selectedAnswers = new Array(QUESTIONS.length).fill(null);
-            activeQuestionSubsets = new Array(QUESTIONS.length).fill(null); // Clears old shuffles for retakes
+            activeQuestionSubsets = new Array(QUESTIONS.length).fill(null);
             archetypeDiscoveryOrder = [];
             
             document.getElementById("resultSection").style.display = "none";
