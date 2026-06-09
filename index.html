@@ -578,11 +578,43 @@
         let currentQuestionIdx = 0;
         let selectedAnswers = new Array(QUESTIONS.length).fill(null);
         let archetypeDiscoveryOrder = [];
+        
+        // This array keeps track of WHICH subset of 3 choices was selected for each question
+        let activeQuestionSubsets = new Array(QUESTIONS.length).fill(null);
 
         window.onload = function() {
-            renderQuestion();
+            loadQuestionLayout();
         };
 
+        // NEW METHOD: Generates or fetches the static 3-choice layout pool for the question
+        function loadQuestionLayout() {
+            const currentQuestion = QUESTIONS[currentQuestionIdx];
+
+            // If we haven't created a layout subset for this question yet, build it once!
+            if (activeQuestionSubsets[currentQuestionIdx] === null) {
+                let choicePool = currentQuestion.answers.map((ans, idx) => ({ data: ans, originalIndex: idx }));
+                let subset = [];
+
+                // Grab up to 3 options randomly
+                while (subset.length < 3 && choicePool.length > 0) {
+                    const randIndex = Math.floor(Math.random() * choicePool.length);
+                    subset.push(choicePool[randIndex]);
+                    choicePool.splice(randIndex, 1);
+                }
+
+                // Scramble their display order once so it's not alphabetical
+                for (let i = subset.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [subset[i], subset[j]] = [subset[j], subset[i]];
+                }
+
+                activeQuestionSubsets[currentQuestionIdx] = subset;
+            }
+
+            renderQuestion();
+        }
+
+        // RENDER ENGINE: Cleanly updates the UI elements based on the locked layout pool
         function renderQuestion() {
             const currentQuestion = QUESTIONS[currentQuestionIdx];
             document.getElementById("currentQuestionNumber").innerText = currentQuestionIdx + 1;
@@ -597,37 +629,14 @@
             const optionsContainer = document.getElementById("answerOptions");
             optionsContainer.innerHTML = "";
 
-            // 1. Gather all choices available for this specific question
-            let choicePool = currentQuestion.answers.map((ans, idx) => ({ data: ans, originalIndex: idx }));
+            // Pull the locked array of 3 options we generated in loadQuestionLayout
+            const lockedSubset = activeQuestionSubsets[currentQuestionIdx];
 
-            // 2. Dynamic Subset Engine: Grab the previously selected choice if it exists
-            let finalizedSubset = [];
-            const pastSelection = selectedAnswers[currentQuestionIdx];
-
-            if (pastSelection !== null) {
-                const selectedItem = choicePool.find(item => item.originalIndex === pastSelection);
-                finalizedSubset.push(selectedItem);
-                choicePool = choicePool.filter(item => item.originalIndex !== pastSelection);
-            }
-
-            // 3. Randomly pull from remaining choices to bring the visible view to exactly 3 options
-            while (finalizedSubset.length < 3 && choicePool.length > 0) {
-                const randIndex = Math.floor(Math.random() * choicePool.length);
-                finalizedSubset.push(choicePool[randIndex]);
-                choicePool.splice(randIndex, 1);
-            }
-
-            // 4. Scramble the final 3 choices so layout order remains completely unpredictable
-            for (let i = finalizedSubset.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [finalizedSubset[i], finalizedSubset[j]] = [finalizedSubset[j], finalizedSubset[i]];
-            }
-
-            // 5. Build and inject elements into user viewport
-            finalizedSubset.forEach((item) => {
+            lockedSubset.forEach((item) => {
                 const button = document.createElement("button");
                 button.className = "answer-btn";
                 
+                // Keep highlighting perfectly bound to the original choice index
                 if (selectedAnswers[currentQuestionIdx] === item.originalIndex) {
                     button.classList.add("selected");
                 }
@@ -646,6 +655,7 @@
                 archetypeDiscoveryOrder.push(arch);
             }
             
+            // Re-render only to refresh the visual button state—no text will scramble now!
             renderQuestion();
         }
 
@@ -657,7 +667,7 @@
 
             if (currentQuestionIdx < QUESTIONS.length - 1) {
                 currentQuestionIdx++;
-                renderQuestion();
+                loadQuestionLayout(); // Generates/loads the pool for the next slide safely
             } else {
                 calculateAndShowResults();
             }
@@ -666,7 +676,7 @@
         function prevQuestion() {
             if (currentQuestionIdx > 0) {
                 currentQuestionIdx--;
-                renderQuestion();
+                loadQuestionLayout(); // Loads the historical frozen pool for the past slide perfectly
             }
         }
 
@@ -674,19 +684,14 @@
             const archetypeScores = { 'Pathwalker': 0, 'Ember-Keeper': 0, 'Metamorph': 0, 'Deep Eye': 0, 'Threader': 0 };
             let continuousOrientationBalance = 0; 
 
-            // MATRIX ENGINE: Combining progressive question linear tracking with variable options weights
             selectedAnswers.forEach((ansIdx, qIdx) => {
                 const answerData = QUESTIONS[qIdx].answers[ansIdx];
                 const linearWeight = WEIGHTS[qIdx];
                 
-                // Archetype score increases strictly by pure scaled progression weight
                 archetypeScores[answerData.archetype] += linearWeight;
-                
-                // Orientation scores shift balance via baseline polarity multiplied by linear weight
                 continuousOrientationBalance += (answerData.direction * linearWeight);
             });
 
-            // 1. Resolve Primary Archetype (using selection priority tie-breaking algorithm)
             let primaryArchetype = '';
             let maxArchScore = -1;
             
@@ -704,7 +709,6 @@
                 }
             }
 
-            // 2. Resolve Directional Balance Orientation (Positive = Unbound, Negative/Zero = Bound)
             let primaryOrientation = 'Bound';
             if (Math.abs(continuousOrientationBalance) < 0.001) {
                 primaryOrientation = Math.random() < 0.5 ? 'Bound' : 'Unbound';
@@ -712,7 +716,6 @@
                 primaryOrientation = 'Unbound';
             }
 
-            // 3. Render exact content maps to viewport
             const resultData = ARCHETYPE_CONTENT[primaryArchetype][primaryOrientation];
 
             document.getElementById("questionSection").style.display = "none";
@@ -729,13 +732,11 @@
         function retakeQuiz() {
             currentQuestionIdx = 0;
             selectedAnswers = new Array(QUESTIONS.length).fill(null);
+            activeQuestionSubsets = new Array(QUESTIONS.length).fill(null); // Clears old shuffles for retakes
             archetypeDiscoveryOrder = [];
             
             document.getElementById("resultSection").style.display = "none";
             document.getElementById("questionSection").style.display = "block";
             
-            renderQuestion();
+            loadQuestionLayout();
         }
-    </script>
-</body>
-</html>
