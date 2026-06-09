@@ -318,86 +318,86 @@
         // WEIGHT ENGINE: Linear Weight Progression Q1-Q10 (1.0 to 2.0)
         const WEIGHTS = [1.0, 1.111, 1.222, 1.333, 1.444, 1.556, 1.667, 1.778, 1.889, 2.0];
 
-        // VERBATIM RESULTS DATABASE MAPPED TO THE FINAL PAIRINGS
+       // GROUNDED RESULTS DATABASE: Pure empowerment, zero esoteric fluff
         const ARCHETYPE_CONTENT = {
             "Pathwalker": {
                 "Bound": {
-                    desc: "You are the Pathwalker, and you make your own way on purpose. Your values, boundaries, and desires are your tools. Each step teaches you something because making the path reveals new ground. The more you choose with intention, the more the landscape opens—showing crossings that were there all along, waiting for someone to walk them.",
+                    desc: "You are the Pathwalker, and you build your own momentum on purpose. Your values, boundaries, and clear choices are practical tools. Instead of waiting for paths to clear, you take action to reveal the next step. The more intentionally you choose your direction, the more naturally your environment aligns to support you.",
                     mythTitle: "Ulysses of Ithaca — The Vowkeeper",
-                    mythText: "After the Trojan War, Ulysses fights for ten more years to reach Ithaca and his wife, Penelope. He blinds the Cyclops to escape the cave, ties himself to the mast to pass the Sirens, steers between Scylla and Charybdis, and refuses Calypso’s offer of immortality. He comes home in disguise, strings his great bow, and clears his hall to stand beside Penelope again.",
+                    mythText: "Ulysses fights through ten years of shifting seas to return home. He navigates past the Sirens, outsmarts the Cyclops, and refuses an offer of immortality from a goddess because his loyalty belongs to his home. When he finally returns, he steps into his hall with full authority, stringing his great bow and reclaiming his life on his own terms.",
                     core: "Keep the promise. Finish the return.",
-                    prompt: "Who or what are you coming back to, no matter how long it takes?"
+                    prompt: "What core commitment are you ready to see through to the end?"
                 },
                 "Unbound": {
-                    desc: "You follow what calls you and forge a path as you go. One day it’s a coast road, the next a steep climb, then a turn into a new city. Each way you try shows a different part of who you are. You test, learn, and bring back what works—notes, maps, “this turn is worth it.” When you follow one pull, another draws you forward.",
+                    desc: "You thrive on discovery and build your path dynamically as you go. You are highly adaptable, testing different options, learning what works, and bringing practical insights back to your projects. Instead of locking into a single rigid plan, you follow fresh inspiration wherever it leads, trusting your resourcefulness to guide you.",
                     mythTitle: "Odin the Wanderer — The Seeker",
-                    mythText: "Odin leaves Asgard to hunt knowledge across the Nine Worlds. At Mímir’s well, he gives an eye for a drink that grants deep wisdom. He hangs nine nights on the World Tree, pierced by his own spear, to win the runes—keys to language, magic, and fate. He sends ravens Huginn and Muninn each day to bring back thought and memory from all realms.",
-                    core: "Seek what is true, even when it costs you.",
-                    prompt: "What wisdom is worth your price?"
+                    mythText: "Odin leaves his high throne to walk the world as an ordinary traveler, seeking real knowledge. He trades a piece of his sight for a drink from the well of deep wisdom, and studies the ancient runes to understand how the world fits together. He uses his sharp mind to gather practical insights from every corner of his journey.",
+                    core: "Seek what is true, even when it demands your focus.",
+                    prompt: "What new insight or practical skill is worth your time and energy right now?"
                 }
             },
             "Ember-Keeper": {
                 "Bound": {
-                    desc: "You tend the fire at the center of what matters most. You turn inward, feel fully, and let that guide what you need. When life shifts, you pull what you love close and keep it steady, letting change move around you. Quiet tending builds steady heat and strength you can trust.",
+                    desc: "You protect and tend the emotional core of your life and work. You turn inward to understand what you genuinely feel, using those insights to anchor your choices. When external circumstances become chaotic, you pull what you care about close and keep it steady, creating a reliable foundation that won't be shaken.",
                     mythTitle: "Hestia — Keeper of the Hearth",
-                    mythText: "Hestia stays at the center of the Greek gods’ halls, tending the sacred fire that must not go out. Every home and city keeps a hearth for her; embers from the mother fire light new ones so the line continues without breaking. She declines marriage and stays at the center, quiet and essential, ensuring warmth remains.",
+                    mythText: "Hestia remains at the very center of the community, tending the flame that keeps everyone warm and connected. While other forces clash outside, she ensures the heart of the home stays secure, vibrant, and alive. Her quiet presence provides the essential warmth that keeps the entire foundation running smoothly.",
                     core: "Protect the center. Keep the flame steady.",
-                    prompt: "What is the core fire you must protect right now, even if everything else changes around it?"
+                    prompt: "What is the core priority you need to protect and nurture right now?"
                 },
                 "Unbound": {
-                    desc: "Your inner fire moves outward. It warms rooms, sparks action, and invites others to feel their own warmth. You say what rises, when it rises. Your flame helps people believe in themselves.",
+                    desc: "Your internal passion naturally moves outward to inspire others. You excel at speaking your truth directly from the heart the moment it hits you, warming up spaces and helping people recognize their own potential. Your open expression builds immediate, authentic bridges of connection wherever you go.",
                     mythTitle: "Prometheus — The Firebringer",
-                    mythText: "Prometheus climbs Olympus, steals a spark from Zeus’s sacred hearth, and hides it in a hollow fennel stalk to give to humanity. This spark brings warmth, craft, and independence, changing the path of human evolution forever. He accepts the harsh punishment that follows because sharing the fire matters more than his safety.",
+                    mythText: "Prometheus sees an opportunity to elevate humanity, so he acts boldly. He steals a spark of fire from the heavens, sharing it openly with the world. This single gift provides warmth, fuels creative craft, and helps people build their own independent futures, sparking an entire wave of shared human potential.",
                     core: "Share the spark. Let the flame spread.",
-                    prompt: "What passion or truth are you keeping inside that needs to be shared with the world?"
+                    prompt: "What direct truth or creative insight are you ready to speak out loud?"
                 }
             },
             "Metamorph": {
                 "Bound": {
-                    desc: "Transformation is your craft. When change is needed, you choose it and set the terms. Each shift is deliberate. The you that emerges is shaped by your choices—not by accident.",
+                    desc: "Transformation is your deliberate choice. When you realize a structure or a way of living no longer serves you, you intentionally break it down and design the next version of your life. Your personal growth doesn't happen by accident—you actively direct your focus to shape exactly who you choose to become.",
                     mythTitle: "The Alchemist — The Work of Great Art",
-                    mythText: "In medieval laboratories, the alchemist purifies base metal inside a sealed vessel. Through deliberate stages—dissolution, calcination, distillation—the substance is broken down and reformed until it changes structural nature entirely. This transformation doesn't happen by accident; it requires precise fire and internal focus.",
+                    mythText: "Inside a focused environment, the alchemist systematically refines raw materials. Through precise steps—breaking down old compounds, clearing away impurities, and rebuilding the structure—the material is permanently upgraded into something stronger. The entire process requires absolute intention and steady execution.",
                     core: "Direct the fire. Shape your own evolution.",
-                    prompt: "What part of your life or identity are you actively dismantling to make room for what you choose to become?"
+                    prompt: "What part of your old routine are you intentionally clearing away to design what's next?"
                 },
                 "Unbound": {
-                    desc: "You change with the moment. When life turns, you take the shape it asks for and live it fully. You move this way—so attuned that transformation is already happening as you meet what comes.",
+                    desc: "You are exceptionally agile, changing and adapting smoothly alongside life's natural shifts. When situations evolve, you don't waste energy resisting; you fluidly recalibrate your perspective and immediately find creative opportunities within the new reality. Your growth happens in real-time as you respond to the world around you.",
                     mythTitle: "Proteus — Shepherd of the Changing Deep",
-                    mythText: "Proteus lives in the coastal caves of Egypt, herding the seals of Poseidon. He knows the depths of the sea and the future paths of men. When travelers catch him to ask for directions, he shifts instantly—becoming a lion, a leopard, a rushing river, a burning tree. He flows through every form until the visitor lets go of control.",
+                    mythText: "Proteus is a legendary figure of the sea who possesses total awareness of the deep waters and future possibilities. When visitors seek him out for direction, he shifts shape with incredible speed—becoming a powerful lion, a rushing river, or a vibrant, burning tree. He moves flawlessly through every form, showing complete mastery over change.",
                     core: "Flow with the shift. Take the shape that releases you.",
-                    prompt: "Where are you resisting a current transformation, and what happens if you stop fighting and change shape instead?"
+                    prompt: "Where can you stop resisting a current change and instead use it to your creative advantage?"
                 }
             },
             "Threader": {
                 "Bound": {
-                    desc: "You hold the threads of fate in your hands—past and present visible together. You read how they run, keep what moves you forward, and set down what doesn’t. Careful choices make the pattern align, and the path ahead eases.",
+                    desc: "You step back to view your personal history and current circumstances as an interconnected whole. By seeing the underlying patterns of your life, you intentionally choose which habits to keep and which ones to leave behind, elegantly weaving your past successes into a highly structured plan for the future.",
                     mythTitle: "Ariadne — Guide of the Core Line",
-                    mythText: "Ariadne holds the key to the Labyrinth of Crete. She gives Theseus a ball of red thread, telling him to tie it to the entrance and unwind it as he steps into the darkness. When the monster is faced, the thread holds the pattern of his journey, letting him retrace his steps and find his way back to the light.",
+                    mythText: "Ariadne understands the complex layout of the great Labyrinth. She hands a simple spool of red thread to the hero, instructing him to anchor it at the entrance and unroll it as he goes. This clear, steady line maps the entire journey, ensuring he can face the unknown and always find his way back to safety.",
                     core: "Hold the line. Trust the connection.",
-                    prompt: "Which thread of fate will you follow now?"
+                    prompt: "Which reliable strength from your past will you use to navigate your current project?"
                 },
                 "Unbound": {
-                    desc: "The thread of your story moves in Fate’s hands. As the weaving shifts, you feel the turn and gain a new view. Paths open, timings click, and you trust what emerges.",
+                    desc: "You have a natural sense for timing and structural flow. You trust the timing of events, knowing when to wait and exactly when to strike. By remaining observant, you easily spot emerging trends, collaborate seamlessly with others, and move forward precisely when the ideal window of opportunity opens.",
                     mythTitle: "The Norns — Weavers at the Roots",
-                    mythText: "In Norse lore, the Norns—Urd, Verdandi, and Skuld—tend the roots of Yggdrasil. They fetch water and carve runes at the tree’s roots. There, they set each life’s thread of fate. As their weaving shifts, new crossings appear and the moment to act becomes clear.",
+                    mythText: "The Norns sit at the deep roots of the world tree, constantly observing the grand patterns of time. They track the interplay of past choices, current realities, and future potentials. Rather than forcing events, they watch the natural intersection of elements, highlighting the perfect moment for meaningful action to occur.",
                     core: "Notice the opening. Move when it’s time.",
-                    prompt: "What will you act on now?"
+                    prompt: "What natural opportunity is unfolding around you right now that is ready for action?"
                 }
             },
             "Deep Eye": {
                 "Bound": {
-                    desc: "Your sight turns inward. You know what you see because you’ve looked long enough to understand yourself. The deeper you look, the clearer things become—and from that steady place, you trust your way.",
+                    desc: "Your strength comes from profound internal clarity. You take the time to observe your thoughts and feelings completely objectively before making a move. This deliberate, mindful pause gives you an unshakeable sense of certainty, allowing you to act with absolute conviction when you decide the time is right.",
                     mythTitle: "Völva — Seer in the Circle",
-                    mythText: "In Norse tradition, a völva sits inside a marked circle with a staff. People come to ask about harvest, storms, and war. She keeps silence, looks within, and then names the thing that is coming—good weather, a raid, a birth, an end.",
+                    mythText: "The völva takes a quiet, deliberate seat within a grounded space to observe what is truly happening. She clears away external noise and focuses completely inward. By looking past surface appearances, she gains an accurate view of the core situation, providing clear, grounded direction for everyone around her.",
                     core: "Look within. The next right action will become clear.",
-                    prompt: "What becomes clear when you look within?"
+                    prompt: "When you step away from the noise, what central truth do you instantly see?"
                 },
                 "Unbound": {
-                    desc: "Your attention lights the world. People around you rise to meet it. You notice what others miss and say it plainly, and that helps them see more of who they are.",
+                    desc: "You are a master observer of dynamics and systems, picking up on crucial details that others completely miss. By naming these patterns clearly and objectively, you illuminate hidden opportunities and bring out the best in the people and teams around you, expanding what everyone thinks is possible.",
                     mythTitle: "Tiresias — Sight on the Road",
-                    mythText: "In Greek myth, Tiresias is struck blind and granted prophecy. He lives both as man and woman, then walks with travelers and advises kings. He listens, notices signs others miss—birds, smoke, footsteps—and speaks the truth about what lies ahead.",
+                    mythText: "Tiresias walks through changing landscapes with a deep, unshakeable perspective. While others get caught up in temporary distractions, he tunes into the underlying signals, environments, and structural directions of the journey. He shares his observations plainly, giving travelers the vital clarity they need to navigate what lies ahead.",
                     core: "Travel with eyes open. Share what’s coming.",
-                    prompt: "What truth do you see right now that others are ignoring or missing?"
+                    prompt: "What clear potential or asset do you see in your current situation that needs to be brought to light?"
                 }
             }
         };
