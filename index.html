@@ -326,7 +326,7 @@
     </div>
 
     <script>
-        // ARCHETYPE DATABASE (Synced with internal copy updates)
+        // ARCHETYPE DATABASE (Enables passport mappings after calculations finish)
         const ARCHETYPE_CONTENT = {
             "Pathwalker": {
                 "Bound": {
@@ -410,7 +410,7 @@
             }
         };
 
-        // EXPLICITLY UPDATED NON-CAREER LIFESTYLE MATRIX
+        // ENTIRE QUESTION MATRIX REPLACED EXACTLY AS PROVIDED IN JUNE 2026 INTERNAL DOCUMENT
         const QUESTIONS = [
             {
                 id: 1,
@@ -434,67 +434,67 @@
                 scene: "You sit down to start a task and find your mind is somewhere else before you even begin.",
                 question: "How do you bring your focus to the task at hand?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -1, orientation: 'Bound', text: "I remind myself why this task matters and start with the first small step." },
-                    { archetype: 'Pathwalker', value: 1, orientation: 'Unbound', text: "I follow the pull of whatever feels most alive right now and come back to the task when it fits." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I check in with how I am feeling and give myself a moment before I begin." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I share what is on my mind with someone nearby before settling back in." },
-                    { archetype: 'Metamorph', value: -2, orientation: 'Bound', text: "I picture the task finished and use that image to pull myself in." },
-                    { archetype: 'Metamorph', value: 2, orientation: 'Unbound', text: "I switch up my setup or location and let the change bring my attention back." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I connect this task to the larger goal it serves and let that focus me." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I notice what is pulling my attention and decide whether to follow it or set it aside." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause, take a breath, and observe where my mind went before I bring it back." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I look around me, take in what I see, and let the environment bring me back to the present." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I set a timer for five minutes and work with single-minded focus until it rings." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I tell myself I can handle this later and let my mind drift for a bit." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I gently remind myself of my intention and begin again with a clear head." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I name the feeling of distraction with kindness and let it settle as I return to my breath." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I visualize my task completed, then jump right in with energy." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I get curious about my distraction and then switch to something else that excites me." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I ask myself what the main goal is and then act on the most immediate step." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I notice what's pulling my focus and decide to explore that feeling or thought outwardly." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause for a moment, take a deep breath, and gently bring my attention back." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I look out the window or around me, letting the external scene reset my attention." }
                 ]
             },
             {
                 id: 3,
-                scene: "Someone shares news that surprises you.",
+                scene: "A friend shares news with you that you did not see coming. It lands quickly and you feel something shift inside you as they speak.",
                 question: "What is your reaction to the news?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I take a breath and decide how I want to respond before I say anything." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I feel drawn into the moment and respond right away with what comes up." },
-                    { archetype: 'Ember-Keeper', value: -1, orientation: 'Bound', text: "I check in with how the news lands for me before I share a reaction." },
-                    { archetype: 'Ember-Keeper', value: 1, orientation: 'Unbound', text: "I express what I feel openly and make sure the other person feels heard." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I take a moment to let the news settle and see what it shifts in my thinking." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I go with wherever the conversation takes me and adjust as I go." },
-                    { archetype: 'Threader', value: -2, orientation: 'Bound', text: "I think about how this fits into the bigger picture before I respond." },
-                    { archetype: 'Threader', value: 2, orientation: 'Unbound', text: "I ask questions to understand more and let the answers guide what I do next." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause and notice my reaction internally before I say anything out loud." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I take in the full situation around me and let what I observe shape my response." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I decide what action to take next based on my initial instinct." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I lean in with curiosity and ask how this new information lands for them." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I take a breath and share my feelings honestly." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I express my surprise openly and seek connection." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I reflect quietly on how this changes my perspective." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I share how this shift changes our shared story and what possibilities it opens." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I trace the thread of this news back to its source to understand its impact on my path." },
+                    { archetype: 'Threader', value: 2, orientation: 'Unbound', text: "I quickly share my reaction with others or ask questions to understand more." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause and take a moment to process what I feel inwardly." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I feel into the moment and notice the details of my inner experience." }
                 ]
             },
             {
                 id: 4,
-                scene: "You are standing outside a class you have signed up for, about to walk in for the first time.",
+                scene: "You are standing outside a class you have signed up for, about to walk in for the first time. The door is right in front of you.",
                 question: "How do you feel as you reach for the door?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I remind myself that I chose to be here and let that carry me through the door." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I feel curious about what is inside and let that pull me in." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I take a slow breath and check in with myself before stepping inside." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I feel warmth toward the people already in there and let that welcome me in." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I picture the version of myself who will walk out afterward and step in with that in mind." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I let the energy of the space pull me in and trust I will find my footing." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about why I signed up and how this fits into what I am building for myself." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I look around and take in who is there before I decide where to settle." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause at the door and notice what I am feeling in my body before I go in." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I take in the sounds and atmosphere around me and let what I notice ease me inside." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I imagine myself successfully engaging and making the most of it." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I feel eager and ready to explore something new." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I take a deep breath to ground myself and prepare inwardly." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I sense the energy in the room and open my heart to meet it." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I focus on what I hope to learn or gain from the class." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I think of the potential transformations this experience might bring." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I recall why I chose this path and anchor myself in that intention." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I smile and look forward to connecting with others inside." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause briefly, noticing my body and breath before moving forward." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I glance around, assessing the environment before entering." }
                 ]
             },
             {
                 id: 5,
-                scene: "During a conversation with a friend, a wave of gratitude comes up for you.",
+                scene: "You are in the middle of a conversation with a friend and a wave of gratitude comes up in you. It rises quietly and you become aware of it as they are speaking.",
                 question: "How do you express it?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -1, orientation: 'Bound', text: "I wait for the right moment and then tell them directly what I appreciate about them." },
-                    { archetype: 'Pathwalker', value: 1, orientation: 'Unbound', text: "I say it as soon as it comes up and let the words be simple and honest." },
-                    { archetype: 'Ember-Keeper', value: -1, orientation: 'Bound', text: "I hold the feeling quietly and let it show in how attentive and present I am." },
-                    { archetype: 'Ember-Keeper', value: 1, orientation: 'Unbound', text: "I share the feeling warmly and openly so they know how much they mean to me." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I reflect on what specifically sparked the gratitude and name that when I share it." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I let the feeling come out naturally in the way the conversation goes." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about what this friendship has meant over time and let that come through in what I say." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I follow the flow of the conversation and express it when the moment opens up." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I notice the feeling fully before I speak and then choose words that fit what I actually feel." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I take in the whole moment between us and let what I see in them bring the words out." }
+                    { archetype: 'Pathwalker', value: -1, orientation: 'Bound', text: "I express it through a small act of kindness afterward." },
+                    { archetype: 'Pathwalker', value: 1, orientation: 'Unbound', text: "I smile and express appreciation openly." },
+                    { archetype: 'Ember-Keeper', value: -1, orientation: 'Bound', text: "I hold this feeling warmly within me while I listen fully to their words." },
+                    { archetype: 'Ember-Keeper', value: 1, orientation: 'Unbound', text: "I send them a quick message or note afterward." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I pause to reflect on the moment before thanking." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I let the feeling of gratitude transform my tone and soften my expression." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I recognize the specific moment where our stories connected and honor that link." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I share how their words or actions made a difference for me." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I look into the person's eyes and thank them sincerely." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I look around and feel the warmth of the moment, letting that guide my thanks." }
                 ]
             },
             {
@@ -502,88 +502,89 @@
                 scene: "You wake up before your alarm. The house is quiet and you have time before the day begins.",
                 question: "What do you do first?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I use the quiet time to set a clear intention for the day ahead." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I follow whatever calls to me in that moment without planning it out." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I stay still and enjoy the quiet before anything else starts." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I reach for something warm and comforting and ease into the morning slowly." },
-                    { archetype: 'Metamorph', value: -2, orientation: 'Bound', text: "I use the extra time to do something that sets a good tone for the day." },
-                    { archetype: 'Metamorph', value: 2, orientation: 'Unbound', text: "I let the mood of the morning decide what I do first." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about what the day holds and where I want to focus my energy." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I check in with messages or news to see what is happening around me." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I lie still and notice how I feel before I get up or do anything." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I take in the quiet sounds and light around me and let that ease me into the day." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I check my plans and set an intention for the day." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I step outside to greet the morning light and breathe in the fresh air." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I stretch gently and breathe deeply to welcome the day." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I send a silent wish of peace to the people still sleeping in my home." },
+                    { archetype: 'Metamorph', value: -2, orientation: 'Bound', text: "I think about what excites me today and visualize it." },
+                    { archetype: 'Metamorph', value: 2, orientation: 'Unbound', text: "I imagine the version of me who has already started the day with joy." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I review the threads of my commitments and order them by what feels most alive." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I check my phone for notifications or messages." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I spend a moment in silence, observing my body and mind." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I relax back a little, enjoying the quiet before the day begins." }
                 ]
             },
             {
                 id: 7,
-                scene: "A friend asks for your honest opinion about a decision they are considering.",
+                scene: "A friend asks for your honest opinion about a decision they are considering. They are looking to you for your perspective.",
                 question: "How do you share your opinion?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I share what I genuinely think and trust them to do what feels right for them." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I say what comes to me clearly and let the conversation go where it needs to." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I think about how to say it kindly before I speak." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I make sure they feel supported first and share my view from that place." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I focus on what could open up for them and frame my opinion around that." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I read how they are showing up and let that shape how I share my perspective." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about what I know of their path and offer my view from that context." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I ask a few questions first to understand the full picture before I say anything." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I take a moment to make sure what I share reflects what I actually think rather than what I assume." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I pay attention to what they are not saying as much as what they are and respond to all of it." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I trust my intuition and offer the clearest next step I can see." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I express my thoughts clearly and openly." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I take a moment to consider how best to communicate it kindly." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I share my perspective with warmth and invite them to share their own feelings." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I focus on being constructive and helpful." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I explore how this choice might evolve them and reflect that potential back." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I look at the pattern of their past choices and point out where this fits." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I share my reasoning and invite dialogue." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I offer my honest perspective with warmth and respect." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I notice the emotional current between us and adjust my tone to hold space." }
                 ]
             },
             {
                 id: 8,
-                scene: "You find yourself with a good amount of free time between commitments and decide to have a day of self-care.",
+                scene: "You find yourself with a good amount of free time between commitments and decide to spend it on yourself.",
                 question: "What is the first thing you do for yourself?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I choose the one thing I know will restore me most and start there." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I head outside and let the walk take me wherever feels right." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I make myself something nourishing and take time to enjoy it slowly." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I reach out to someone who fills me up and spend time with them." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I choose something that feels like a reset and commit to it fully." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I pick up something creative and see where it takes me." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about what has felt low lately and choose something that brings it back up." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I connect with someone I care about and let that be the care I need today." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I put on something I love to listen to and let it take me into a different headspace." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I choose one small action that moves me toward a personal goal." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I take a long walk outside, soaking in nature." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I prepare a nourishing meal for myself." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I create a cozy atmosphere that invites a sense of safety and ease." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I pause to notice what part of me needs tending right now." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I indulge in a creative activity that reconnects me." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I check the rhythm of my day and adjust my pace to match my energy." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I reach out to someone I care about for connection." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I spend time meditating or quieting my mind." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I listen to music or a favorite podcast while resting." }
                 ]
             },
             {
                 id: 9,
-                scene: "A friend pays you a genuine compliment about who you are.",
+                scene: "A friend looks at you and offers you a genuine compliment about who you are. It is specific and it lands.",
                 question: "How do you respond?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I take it in, say thank you, and let myself believe it." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I smile and say what comes naturally without overthinking it." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I receive it quietly and let it settle in before I say anything back." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I tell them what they mean to me and let the warmth go both ways." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I let it land and notice how it shifts something in how I see myself." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I go with the feeling it brings up and respond from there." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about the journey that brought me to this moment and feel the weight of it." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I let the connection between us deepen and respond with genuine appreciation." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause and notice what comes up in me before I respond." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I take in how they said it as much as what they said and let that shape my response." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I accept the truth of their words and store it as fuel for my journey." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I feel grateful and respond with a smile." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I modestly brush it off and redirect the conversation." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I return the compliment or share my gratitude openly." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I let the compliment reshape how I see myself for a moment." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I share how hearing this changes my mood and lifts my spirits." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I acknowledge the compliment and express my appreciation." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I acknowledge the beauty of their perception and how it weaves us closer." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I thank them warmly and accept it inwardly." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I watch the warmth spread in my chest and let it guide my smile." }
                 ]
             },
             {
                 id: 10,
-                scene: "After a warm visit with a close friend, you are walking home.",
+                scene: "After a warm visit with a close friend, you are walking home. The time you spent together is still with you.",
                 question: "What do you feel on your walk home?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I feel clear and settled in myself and think about what I want to do next." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I feel energized and ready to carry that good feeling into something." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I hold the warmth of the visit close and let myself enjoy it quietly." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I feel full of warmth and find myself wanting to pass it along to someone else." },
-                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I notice something has shifted in me from the visit and sit with that feeling." },
-                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I feel inspired by the time together and open to what it sparks in me." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I think about how much this friendship has meant across time and feel grateful for it." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I think about what I want to share or do with them next time." },
-                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I walk in quiet and notice what is still with me from the visit." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I take in everything around me on the walk and let it reflect back how I feel." }
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I carry the clarity of our connection as a steady compass for my next steps." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I feel energized and motivated." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I savor the moment of human connection." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I carry a sense of gratitude and openness." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I notice how the experience has softened my inner landscape." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I feel inspired by the connection we shared." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I reflect on the pattern of care we shared and how it strengthens our bond." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I think about what I want to share next with my friend." },
+                    { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "Warmth and contentment fill me." },
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I feel the lingering resonance of our conversation echoing in the quiet street." }
                 ]
             }
         ];
 
-        // ENGINE MATRIX DISTRIBUTION MAP (Guarantees every Archetype & Orientation receives exactly 6 exposures)
+        // ENGINE MATRIX DISTRIBUTION MAP (Guarantees balance while pulling exclusively 3 options per question)
         const ASSIGNED_ROTATION_MAP = [
             [ {a: 'Pathwalker', o: 'Bound'},   {a: 'Ember-Keeper', o: 'Unbound'}, {a: 'Metamorph', o: 'Bound'} ],   // Q1
             [ {a: 'Pathwalker', o: 'Unbound'}, {a: 'Metamorph', o: 'Unbound'}, {a: 'Threader', o: 'Bound'} ],     // Q2
@@ -625,7 +626,6 @@
                     }
                 });
 
-                // Fail-safe validation block to ensure fallback protection
                 if (subset.length < 3) {
                     subset = [];
                     let choicePool = currentQuestion.answers.map((ans, idx) => ({ data: ans, originalIndex: idx }));
