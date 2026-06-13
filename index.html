@@ -324,22 +324,22 @@
     </div>
 
     <script>
-        // ARCHETYPE DATABASE (Fully updated with Version 5 Content)
+        // ARCHETYPE DATABASE (Fully updated with Version 6 Content)
         const ARCHETYPE_CONTENT = {
             "Pathwalker": {
                 "Bound": {
                     desc: "You meet intensity by returning to your own direction instead of chasing every pull around you. When something tugs at you, you place a hand on your chest, check it against your values, and move only when it fits. You handle decisions by seeing them as steps you choose, not as tests you must pass. This state reminds you that you can always adjust your route while honoring what matters most to you. You stand steady, feet grounded, as you walk your chosen path.",
                     mythTitle: "Ulysses of Ithaca — The Vowkeeper",
-                    mythText: "After the Trojan War, Ulysses spends ten years choosing his way back to Ithaca and his wife, Penelope. He blinds the Cyclops to escape, has himself tied to the mast to ride out the Sirens' song, steers between Scylla and Charybdis, and refuses Calypso's offer of comfort. Each decision puts his promise to return above ease, distraction, or delay.",
+                    mythText: "After the Trojan War, Ulysses spends ten years choosing his way back to Ithaca and his wife, Penelope. He blinds the Cyclops to escape danger, ties himself to the mast to ride out the Sirens' song, steers between Scylla and Charybdis, and refuses Calypso's offer of comfort. Each decision puts his promise to return above ease, distraction, or delay.",
                     core: "Keep the commitments that matter most, even when many easier options appear.",
-                    prompt: "In your life right now, what promise are you actively choosing to keep?"
+                    prompt: "What promise are you actively choosing to keep right now?"
                 },
                 "Unbound": {
                     desc: "You respond strongly to what feels alive and interesting around you. External pulls—people, places, ideas—can change your direction quickly, and you often learn by trying things on the move. You handle boundaries by noticing when something feels less energizing and letting curiosity lead you into new terrain. In this state, your power is in choosing which pulls to follow and which to ignore as you shape your next turn. You feel the wind shift and step toward the new horizon.",
                     mythTitle: "Odin the Wanderer — The Seeker",
                     mythText: "Odin leaves the safety of Asgard to search the Nine Worlds for knowledge. He trades an eye for a drink from Mímir's well, hangs on the World Tree to learn the runes, and sends his ravens out each day to gather new information. He keeps choosing movement, risk, and learning over staying comfortable and certain.",
                     core: "When you value truth, you choose to step toward it, even when it asks something of you.",
-                    prompt: "What kind of knowledge are you willing to go out of your way to gain right now?"
+                    prompt: "What kind of knowledge are you willing to journey for right now?"
                 }
             },
             "Ember-Keeper": {
@@ -355,7 +355,7 @@
                     mythTitle: "Brigid — Flame on the Road",
                     mythText: "Brigid moves through fields, homes, and workshops, bringing blessings, song, and healing. Her sacred flame at Kildare is tended by many hands and then carried out to light new fires in other places. She uses her warmth to encourage growth, creativity, and care wherever she goes.",
                     core: "Your warmth and encouragement can travel; you decide where to bring it.",
-                    prompt: "Who in your life could benefit from you showing up with warmth and support right now?"
+                    prompt: "Who in your life could benefit from your warmth and support right now?"
                 }
             },
             "Metamorph": {
@@ -401,14 +401,14 @@
                 "Unbound": {
                     desc: "You move through the world noticing patterns, inconsistencies, and unspoken dynamics. External situations quickly trigger observations in you, and you may feel a pull to name what others are missing. You handle boundaries by deciding when to share what you see and when to keep it to yourself to avoid overload. In this state, your power is in choosing how to use your perspective—to guide, to question, or simply to understand your environment more clearly. You scan the horizon and spot the hidden path others missed.",
                     mythTitle: "Tiresias — Sight on the Road",
-                    mythText: "Tiresias loses his physical sight and gains the gift of prophecy. He has lived as both man and woman and now walks with travelers and advises leaders. As he moves, he notices sounds, signs, and patterns others ignore, and he speaks plainly about what likely lies ahead.",
+                    mythText: "Tiresias gains the gift of prophecy in exchange for his physical sight. He has lived as both man and woman and now walks with travelers and advises leaders. As he moves, he notices sounds, signs, and patterns others ignore, and he speaks plainly about what likely lies ahead.",
                     core: "Paying close attention to what you notice can help you name what others are missing.",
-                    prompt: "Right now, what truth do you see about a situation that you could choose to say out loud?"
+                    prompt: "What truth do you see about a situation that you feel called to share?"
                 }
             }
         };
 
-        // Static Master Matrix (Fully updated with newly supplied context scenes)
+        // Static Master Matrix (Fully synchronized with Final V6/V7 Answer Text mapping)
         const QUESTIONS = [
             {
                 id: 1,
@@ -456,7 +456,7 @@
                     { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I hold the news in my mind and see where it fits in my view of things." },
                     { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I share how this shift changes our shared story and what possibilities it opens." },
                     { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I trace the thread of this news back to its source to understand its impact on my path." },
-                    { archetype: 'Threader', value: 2, orientation: 'Unbound', text: "I lean in and ask, \"How did this change things for you?\"" },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I lean in and ask, \"How did this change things for you?\"" },
                     { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I pause, breathe, and name the feeling the news brought up." },
                     { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I look at the person's face and notice how their words land in my chest." }
                 ]
@@ -497,19 +497,19 @@
             },
             {
                 id: 6,
-                scene: "You wake up before your alarm. The house is quiet and you have time before the day begins.",
-                question: "What do you do first?",
+                scene: "You have finished a demanding task and have a moment of quiet before your next commitment. The room is still.",
+                question: "How do you use this transition time?",
                 answers: [
-                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I check my plans and set an intention for the day." },
-                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I step outside to greet the morning light and breathe in the fresh air." },
-                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I stretch gently and breathe deeply to welcome the day." },
-                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I send a silent wish of peace to the people still sleeping in my home." },
-                    { archetype: 'Metamorph', value: -2, orientation: 'Bound', text: "I think about what excites me today and visualize it." },
-                    { archetype: 'Metamorph', value: 2, orientation: 'Unbound', text: "I imagine the version of me who has already started the day with joy." },
-                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I review the threads of my commitments and order them by what feels most alive." },
-                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I check my phone for notifications or messages." },
+                    { archetype: 'Pathwalker', value: -2, orientation: 'Bound', text: "I check my plans and set an intention for the next step." },
+                    { archetype: 'Pathwalker', value: 2, orientation: 'Unbound', text: "I step outside to greet the fresh air and breathe deeply." },
+                    { archetype: 'Ember-Keeper', value: -2, orientation: 'Bound', text: "I stretch gently and breathe deeply to restore my energy." },
+                    { archetype: 'Ember-Keeper', value: 2, orientation: 'Unbound', text: "I send a silent wish of peace to those I am about to meet." },
+                    { archetype: 'Metamorph', value: -1, orientation: 'Bound', text: "I think about what has changed since I started and visualize the next phase." },
+                    { archetype: 'Metamorph', value: 1, orientation: 'Unbound', text: "I imagine how I want to show up in the next part of my day." },
+                    { archetype: 'Threader', value: -1, orientation: 'Bound', text: "I review the threads of my recent work and order them by what feels most alive." },
+                    { archetype: 'Threader', value: 1, orientation: 'Unbound', text: "I check for any messages that might guide my next connection." },
                     { archetype: 'Deep Eye', value: -2, orientation: 'Bound', text: "I spend a moment in silence, observing my body and mind." },
-                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I relax back a little, enjoying the quiet before the day begins." }
+                    { archetype: 'Deep Eye', value: 2, orientation: 'Unbound', text: "I relax back a little, enjoying the quiet and observing the space." }
                 ]
             },
             {
